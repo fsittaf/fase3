@@ -1,6 +1,7 @@
 # Repository
 
 # Talvez usar um json p salvar temporariamente?
+# Colocar User no init do repository?
 class UserRepository:
     def __init__(self) -> None:
         self._users = []
