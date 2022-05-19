@@ -1,0 +1,5 @@
+Estou com erro ao usar imports entre os modulos, por isso do gitignore
+e de estar tudo num arquivo só.
+
+*OBS: talvez seja só o meu virtual enviroment que esteja zoado, ou não, 
+vou testar sem o venv mais tarde.
