@@ -1,4 +1,3 @@
-from wsgiref.validate import validator
 from UserRepository import UserRepository
 from User import User
 from Validator import Validator
