@@ -32,9 +32,7 @@ class WebDesktop:
             print(e)
 
     # TODO:
-    # Mexer nas outras camadas para dar replace, pois talvez perca o created_at
-    # ou criar uma temp var p pegar a data e passar como parametro dps
-    # Ler o que está escrito no UserService.update
+    # Talvez refatorar esse update
     def update(self, id, name, last_name, email, age, role):
         user = User(id, name, last_name, email, age, role,
                     updated_at=formated_actual_time())
@@ -108,4 +106,5 @@ class WebDesktop:
                 self.filter_by_age(age)
 
             elif choice == '8':
+                print('Finalizando...')
                 stop = True

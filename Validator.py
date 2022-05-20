@@ -1,4 +1,3 @@
-from curses.ascii import isdigit
 from User import User
 from Role import Role
 from EmailUtils import is_email_valid
@@ -21,12 +20,6 @@ class Validator:
             raise Exception('Invalid age')
         elif user.role not in Role._member_names_:
             raise Exception('Invalid role')
-
-    # Se eu tivesse colocado esse no método validade acima,
-    # daria erro pq ao criar nao precisa passar id
-    def is_id_valid(self, id):
-        if id not in self.repository._users:
-            raise Exception('ID not found')
 
     def is_age_valid(self, age: str) -> bool:
         try:

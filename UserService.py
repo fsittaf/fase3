@@ -20,7 +20,7 @@ class UserService:
         self.repository.add(user)
 
     def update(self, old_user: User, new_user: User) -> None:
-        self.validator.is_id_valid(new_user.user_id)
+        # self.validator.is_id_valid(old_user.user_id)
         self.validator.validate(new_user)
         self.repository.update(old_user, new_user)
 
@@ -29,10 +29,6 @@ class UserService:
 
     def get_by_name(self, name):
         return next((user for user in self.repository.get_all() if user.name == name), None)
-        # for user in self.repository.get_all():
-        #     if user.name == name:
-        #         return user
-        # return None
 
     def filter_by_age(self, age):
         return [user for user in self.repository.get_all() if user.age == age]

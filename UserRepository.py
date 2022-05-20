@@ -18,7 +18,6 @@ class UserRepository:
     def update(self, old_user, new_user) -> None:
         self.delete(old_user.user_id)
         self.add(new_user)
-        raise Exception("User not found.")
 
     def delete(self, id):
         for user in self._users:
