@@ -1,12 +1,19 @@
-# Repository
+import email
 
 # Talvez usar um json p salvar temporariamente?
 # Colocar User no init do repository?
+
+# Repository
+
+
 class UserRepository:
     def __init__(self) -> None:
         self._users = []
 
     def add(self, user) -> None:
+        for u in self._users:
+            if u.email == user.email:
+                raise Exception("Email already in use")
         self._users.append(user)
 
     def get(self, id):

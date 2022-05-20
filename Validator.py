@@ -1,6 +1,6 @@
+import re
 from User import User
 from Role import Role
-from EmailUtils import is_email_valid
 from UserRepository import UserRepository
 
 
@@ -13,7 +13,7 @@ class Validator:
             raise Exception('Name cannot be empty')
         elif user.last_name == '':
             raise Exception('Last Name cannot be empty')
-        elif not is_email_valid(user.email):
+        elif not self.is_email_valid(user.email):
             raise Exception('Invalid email')
         elif not self.is_age_valid(user.age):
             raise Exception('Invalid age')
@@ -29,3 +29,8 @@ class Validator:
                 False
         except ValueError:
             return False
+
+    def is_email_valid(self, email) -> bool:
+        regex = re.compile(
+            r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
+        return bool(re.fullmatch(regex, email))
