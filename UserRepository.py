@@ -20,6 +20,8 @@ class UserRepository:
         return next((user for user in self._users if user.user_id == id), None)
 
     def get_all(self) -> list:
+        if len(self._users) == 0:
+            print('No users created')
         return self._users
 
     def update(self, old_user, new_user) -> None:

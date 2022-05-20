@@ -31,8 +31,11 @@ class WebDesktop:
             print(e)
 
     def update(self, id, name, last_name, email, age, role):
+        if old_user := self.get(id) is None:
+            return
+        old_user = self.get(id)
         user = User(id, name, last_name, email, age, role,
-                    self.controller.get(id).created_at, formated_actual_time())
+                    old_user.created_at, formated_actual_time())
         self.controller.update(self.controller.get(id), user)
         print('User updated successfully')
 
