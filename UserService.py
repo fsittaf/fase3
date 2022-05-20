@@ -1,4 +1,3 @@
-from wsgiref.validate import validator
 from UserRepository import UserRepository
 from User import User
 from Validator import Validator
@@ -21,6 +20,7 @@ class UserService:
         self.repository.add(user)
 
     def update(self, old_user: User, new_user: User) -> None:
+        self.validator.is_id_valid(new_user.user_id)
         self.validator.validate(new_user)
         self.repository.update(old_user, new_user)
 

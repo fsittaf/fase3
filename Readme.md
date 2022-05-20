@@ -3,3 +3,5 @@
 # Leia tudo do FIX.txt
 # É preciso testar o código
 # Leia alguns comentários que eu coloquei durante o código
+# Atualizar documentação
+# Para o próximo projeto criar uma classe de ExceptionHandler
