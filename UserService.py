@@ -23,7 +23,6 @@ class UserService:
         self.repository.add(user)
 
     def update(self, old_user: User, new_user: User) -> None:
-        self.validator.validate(new_user)
         self.repository.update(old_user, new_user)
 
     def delete(self, id) -> None:
