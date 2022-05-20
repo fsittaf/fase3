@@ -19,6 +19,9 @@ class UserRepository:
     def get(self, id):
         return next((user for user in self._users if user.user_id == id), None)
 
+    def get_by_email(self, email):
+        return next((user for user in self._users if user.email == email), None)
+
     def get_all(self) -> list:
         if len(self._users) == 0:
             print('No users created')

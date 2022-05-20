@@ -8,6 +8,9 @@ class UserController:
     def get(self, id):
         return self.service.get(id)
 
+    def get_by_email(self, email):
+        return self.service.get(email)
+
     def get_all(self):
         return self.service.get_all()
 

@@ -12,6 +12,9 @@ class UserService:
     def get(self, id) -> User:
         return self.repository.get(id)
 
+    def get_by_email(self, email) -> User:
+        return self.repository.get_by_email(email)
+
     def get_all(self) -> list:
         return self.repository.get_all()
 

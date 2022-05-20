@@ -21,6 +21,13 @@ class WebDesktop:
         else:
             print(user)
 
+    def get_by_email(self, email: str):
+        user = self.controller.get_by_email(email)
+        if user is None:
+            print('User not found')
+        else:
+            print(user)
+
     def add(self, name, last_name, email, age, role):
         user = User(generate_id(), name, last_name, email,
                     age, role, formated_actual_time())
@@ -75,6 +82,10 @@ class WebDesktop:
                 self.get(input_id)
 
             elif choice == '3':
+                input_email = input('Insira o e-mail: ')
+                self.get_by_email(input_email)
+
+            elif choice == '4':
                 print('Insira os dados')
                 name = input('Nome: ')
                 last_name = input('Último nome: ')
@@ -83,7 +94,7 @@ class WebDesktop:
                 role = input('Role: ')
                 self.add(name, last_name, email, age, role)
 
-            elif choice == '4':
+            elif choice == '5':
                 print('Insira os dados')
                 input_id = input('Insira o ID: ')
                 name = input('Nome: ')
@@ -93,18 +104,18 @@ class WebDesktop:
                 role = input('Role: ')
                 self.update(input_id, name, last_name, email, age, role)
 
-            elif choice == '5':
+            elif choice == '6':
                 input_id = input('Insira o ID: ')
                 self.delete(input_id)
 
-            elif choice == '6':
+            elif choice == '7':
                 name = input('Nome: ')
                 self.get_by_name(name)
 
-            elif choice == '7':
+            elif choice == '8':
                 age = input('Idade: ')
                 self.filter_by_age(age)
 
-            elif choice == '8':
+            elif choice == '9':
                 print('Finalizando...')
                 stop = True
