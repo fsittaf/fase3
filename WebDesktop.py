@@ -12,8 +12,7 @@ class WebDesktop:
     def get_all(self):
         users = self.controller.get_all()
         for u in users:
-            # TODO: colocar os outros attr
-            print(f'ID: {u.user_id} - Full Name: {u.name} {u.last_name}')
+            print(u)
 
     def get(self, id: str):
         user = self.controller.get(id)
@@ -31,11 +30,9 @@ class WebDesktop:
         except Exception as e:
             print(e)
 
-    # TODO:
-    # Talvez refatorar esse update
     def update(self, id, name, last_name, email, age, role):
         user = User(id, name, last_name, email, age, role,
-                    updated_at=formated_actual_time())
+                    self.controller.get(id).created_at, formated_actual_time())
         self.controller.update(self.controller.get(id), user)
         print('User updated successfully')
 
