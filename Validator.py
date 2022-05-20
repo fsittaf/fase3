@@ -10,21 +10,18 @@ class Validator:
 
     def validate(self, user: User):
         if user.name == '':
-            # raise Exception('Name cannot be empty') -> antigo
-            print('Name cannot be empty')
-            return
+            raise Exception('Name cannot be empty')
         elif user.last_name == '':
-            print('Last Name cannot be empty')
-            return
+            raise Exception('Last Name cannot be empty')
+
         elif not self.is_email_valid(user.email):
-            print('Invalid email')
-            return
+            raise Exception('Invalid email')
+
         elif not self.is_age_valid(user.age):
-            print('Invalid age')
-            return
+            raise Exception('Invalid age')
+
         elif user.role not in Role._member_names_:
-            print('Invalid role')
-            return
+            raise Exception('Invalid role')
 
     def is_age_valid(self, age: str) -> bool:
         try:

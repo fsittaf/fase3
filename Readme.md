@@ -5,3 +5,5 @@
 # Leia alguns comentários que eu coloquei durante o código
 # Atualizar documentação
 # Para o próximo projeto criar uma classe de ExceptionHandler
+# No futuro precisamos padronizar as validações
+# No futuro precisamos padronizar os try/except -> como são feitos e onde colocar

@@ -31,11 +31,13 @@ class WebDesktop:
     def add(self, name, last_name, email, age, role):
         user = User(generate_id(), name, last_name, email,
                     age, role, formated_actual_time())
+        # Talvez englobar um try/except em um fluxo maior?
         try:
             self.controller.add(user)
             print('User added successfully')
         except Exception as e:
-            print(e)
+            print('Error:', e)
+            return
 
     def update(self, id, name, last_name, email, age, role):
         if old_user := self.get(id) is None:
@@ -47,8 +49,11 @@ class WebDesktop:
         print('User updated successfully')
 
     def delete(self, id):
-        self.controller.delete(id)
-        print('User deleted successfully')
+        try:
+            self.controller.delete(id)
+            print('User deleted successfully')
+        except Exception as e:
+            print(e)
 
     def get_by_name(self, name):
         user = self.controller.get_by_name(name)
