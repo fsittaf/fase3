@@ -15,7 +15,6 @@ class Validator:
             raise Exception('Last Name cannot be empty')
         elif not is_email_valid(user.email):
             raise Exception('Invalid email')
-        # aqui
         elif not self.is_age_valid(user.age):
             raise Exception('Invalid age')
         elif user.role not in Role._member_names_:
