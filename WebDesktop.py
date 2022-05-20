@@ -87,12 +87,13 @@ class WebDesktop:
 
             elif choice == '4':
                 print('Insira os dados')
+                input_id = input('ID: ')
                 name = input('Nome: ')
                 last_name = input('Último nome: ')
                 email = input('Email: ')
                 age = input('Idade: ')
                 role = input('Role: ')
-                self.update(name, last_name, email, age, role)
+                self.update(input_id, name, last_name, email, age, role)
 
             elif choice == '5':
                 input_id = input('Insira o ID: ')

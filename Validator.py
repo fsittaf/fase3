@@ -1,11 +1,12 @@
 from User import User
 from Role import Role
 from EmailUtils import is_valid
+from UserRepository import UserRepository
 
 
 class Validator:
-    def __init__(self) -> None:
-        pass
+    def __init__(self, repository: UserRepository) -> None:
+        self.repository = repository
 
     def validate(self, user: User):
         if user.name == '':
@@ -18,3 +19,5 @@ class Validator:
             raise Exception('Invalid age')
         elif user.role not in Role._member_names_:
             raise Exception('Invalid role')
+        elif user.user_id not in self.repository._users:
+            raise Exception('ID not found')
