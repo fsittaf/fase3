@@ -7,7 +7,7 @@ from Validator import Validator
 
 def main():
     repository = UserRepository()
-    validator = Validator()
+    validator = Validator(repository)
     service = UserService(repository, validator)
     controller = UserController(service)
     web_desktop = WebDesktop(controller)

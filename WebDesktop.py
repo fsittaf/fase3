@@ -12,8 +12,7 @@ class WebDesktop:
     def get_all(self):
         users = self.controller.get_all()
         for u in users:
-            # TODO: colocar os outros attr
-            print(f'ID: {u.user_id} - Full Name: {u.name} {u.last_name}')
+            print(u)
 
     def get(self, id: str):
         user = self.controller.get(id)
@@ -22,28 +21,39 @@ class WebDesktop:
         else:
             print(user)
 
+    def get_by_email(self, email: str):
+        user = self.controller.get_by_email(email)
+        if user is None:
+            print('User not found')
+        else:
+            print(user)
+
     def add(self, name, last_name, email, age, role):
         user = User(generate_id(), name, last_name, email,
                     age, role, formated_actual_time())
+        # Talvez englobar um try/except em um fluxo maior?
         try:
             self.controller.add(user)
             print('User added successfully')
         except Exception as e:
-            print(e)
+            print('Error:', e)
+            return
 
-    # TODO:
-    # Mexer nas outras camadas para dar replace, pois talvez perca o created_at
-    # ou criar uma temp var p pegar a data e passar como parametro dps
-    # Ler o que está escrito no UserService.update
     def update(self, id, name, last_name, email, age, role):
+        old_user = self.controller.get(id)
+        if old_user is None:
+            return
         user = User(id, name, last_name, email, age, role,
-                    updated_at=formated_actual_time())
-        self.controller.update(self.controller.get(id), user)
+                    old_user.created_at, formated_actual_time())
+        self.controller.update(old_user, user)
         print('User updated successfully')
 
     def delete(self, id):
-        self.controller.delete(id)
-        print('User deleted successfully')
+        try:
+            self.controller.delete(id)
+            print('User deleted successfully')
+        except Exception as e:
+            print(e)
 
     def get_by_name(self, name):
         user = self.controller.get_by_name(name)
@@ -77,13 +87,8 @@ class WebDesktop:
                 self.get(input_id)
 
             elif choice == '3':
-                print('Insira os dados')
-                name = input('Nome: ')
-                last_name = input('Último nome: ')
-                email = input('Email: ')
-                age = input('Idade: ')
-                role = input('Role: ')
-                self.add(name, last_name, email, age, role)
+                input_email = input('Insira o e-mail: ')
+                self.get_by_email(input_email)
 
             elif choice == '4':
                 print('Insira os dados')
@@ -92,19 +97,30 @@ class WebDesktop:
                 email = input('Email: ')
                 age = input('Idade: ')
                 role = input('Role: ')
-                self.update(name, last_name, email, age, role)
+                self.add(name, last_name, email, age, role)
 
             elif choice == '5':
+                print('Insira os dados')
+                input_id = input('Insira o ID: ')
+                name = input('Nome: ')
+                last_name = input('Último nome: ')
+                email = input('Email: ')
+                age = input('Idade: ')
+                role = input('Role: ')
+                self.update(input_id, name, last_name, email, age, role)
+
+            elif choice == '6':
                 input_id = input('Insira o ID: ')
                 self.delete(input_id)
 
-            elif choice == '6':
+            elif choice == '7':
                 name = input('Nome: ')
                 self.get_by_name(name)
 
-            elif choice == '7':
+            elif choice == '8':
                 age = input('Idade: ')
                 self.filter_by_age(age)
 
-            elif choice == '8':
+            elif choice == '9':
+                print('Finalizando...')
                 stop = True

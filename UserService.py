@@ -12,6 +12,9 @@ class UserService:
     def get(self, id) -> User:
         return self.repository.get(id)
 
+    def get_by_email(self, email) -> User:
+        return self.repository.get_by_email(email)
+
     def get_all(self) -> list:
         return self.repository.get_all()
 
@@ -20,7 +23,6 @@ class UserService:
         self.repository.add(user)
 
     def update(self, old_user: User, new_user: User) -> None:
-        # TODO: testar com -> self.validator.validate(new_user)
         self.repository.update(old_user, new_user)
 
     def delete(self, id) -> None:
@@ -28,10 +30,6 @@ class UserService:
 
     def get_by_name(self, name):
         return next((user for user in self.repository.get_all() if user.name == name), None)
-        # for user in self.repository.get_all():
-        #     if user.name == name:
-        #         return user
-        # return None
 
     def filter_by_age(self, age):
         return [user for user in self.repository.get_all() if user.age == age]
