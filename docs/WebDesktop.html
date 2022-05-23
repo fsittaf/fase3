@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module WebDesktop</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>WebDesktop</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/dotch3/Documents/Coding/Fiap/fase3/WebDesktop.py">/Users/dotch3/Documents/Coding/Fiap/fase3/WebDesktop.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="WebDesktop.html#WebDesktop">WebDesktop</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="WebDesktop">class <strong>WebDesktop</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#WebDesktop">WebDesktop</a>(controller:&nbsp;UserController.UserController)<br>
+&nbsp;<br>
+The&nbsp;main&nbsp;interface&nbsp;&nbsp;allowing&nbsp;the&nbsp;interaction&nbsp;with&nbsp;&nbsp;the&nbsp;user.<br>
+The&nbsp;current&nbsp;MVP&nbsp;use&nbsp;a&nbsp;CLI&nbsp;that&nbsp;simulates&nbsp;the&nbsp;input&nbsp;of&nbsp;a&nbsp;form.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="WebDesktop-__init__"><strong>__init__</strong></a>(self, controller: UserController.UserController)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="WebDesktop-add"><strong>add</strong></a>(self, name, last_name, email, age, role)</dt><dd><tt>Create&nbsp;a&nbsp;new&nbsp;User&nbsp;<a href="builtins.html#object">object</a></tt></dd></dl>
+
+<dl><dt><a name="WebDesktop-delete"><strong>delete</strong></a>(self, id)</dt><dd><tt>'<br>
+Remove&nbsp;the&nbsp;user&nbsp;record&nbsp;from&nbsp;DB&nbsp;collections</tt></dd></dl>
+
+<dl><dt><a name="WebDesktop-execute"><strong>execute</strong></a>(self)</dt><dd><tt>'<br>
+Runs&nbsp;the&nbsp;menu&nbsp;options&nbsp;of&nbsp;the&nbsp;system</tt></dd></dl>
+
+<dl><dt><a name="WebDesktop-filter_by_age"><strong>filter_by_age</strong></a>(self, age)</dt><dd><tt>'<br>
+Filter&nbsp;the&nbsp;list&nbsp;of&nbsp;users&nbsp;by&nbsp;age&nbsp;attribute</tt></dd></dl>
+
+<dl><dt><a name="WebDesktop-get"><strong>get</strong></a>(self, id: str)</dt><dd><tt>Get&nbsp;an&nbsp;especific&nbsp;user</tt></dd></dl>
+
+<dl><dt><a name="WebDesktop-get_all"><strong>get_all</strong></a>(self)</dt><dd><tt>Get&nbsp;all&nbsp;data</tt></dd></dl>
+
+<dl><dt><a name="WebDesktop-get_by_email"><strong>get_by_email</strong></a>(self, email: str)</dt><dd><tt>'<br>
+Get&nbsp;a&nbsp;user&nbsp;searching&nbsp;by&nbsp;e-mail&nbsp;field</tt></dd></dl>
+
+<dl><dt><a name="WebDesktop-get_by_name"><strong>get_by_name</strong></a>(self, name)</dt><dd><tt>Get&nbsp;the&nbsp;user&nbsp;by&nbsp;the&nbsp;name&nbsp;field</tt></dd></dl>
+
+<dl><dt><a name="WebDesktop-update"><strong>update</strong></a>(self, id, name, last_name, email, age, role)</dt><dd><tt>Modfy&nbsp;the&nbsp;data&nbsp;of&nbsp;a&nbsp;user&nbsp;record</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>menu_opt</strong> = ['1', '2', '3', '4', '5', '6', '7', '8', '9']<br>
+<strong>menu_txt</strong> = '<font color="#c040c0">\n</font>&lt;1&gt; - Get all persons<font color="#c040c0">\n</font>&lt;2&gt; - Get person by id<font color="#c040c0">\n</font>&lt;3...son by name<font color="#c040c0">\n</font>&lt;8&gt; - Filter person by age<font color="#c040c0">\n</font>&lt;9&gt; - Exit'</td></tr></table>
+</body></html>

@@ -5,6 +5,9 @@ from Validator import Validator
 
 
 class UserService:
+    """
+        Service that manage the operations that a user can perform
+    """
     def __init__(self, repository: UserRepository, validator: Validator):
         self.repository = repository
         self.validator = validator

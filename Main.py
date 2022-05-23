@@ -6,6 +6,9 @@ from Validator import Validator
 
 
 def main():
+    """
+    Will instantiate the objects for the system
+    """
     repository = UserRepository()
     validator = Validator(repository)
     service = UserService(repository, validator)
