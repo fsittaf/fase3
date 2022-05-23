@@ -7,3 +7,6 @@
 /__pycache__
 /Enum
 /my_anotations.txt
+/.vscode
+/.idea
+.DS_Store

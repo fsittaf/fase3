@@ -1,5 +1,5 @@
-# no fluxo falamos que iriamos gerar uma senha aleatoria,
-# mas isso só terá funcionalidade ao criar sessions
+# Will be used for the generation of the password when user is created
+# Or when the reset password is hit
 # if email and passwd are valids successful login
 import secrets
 import string
