@@ -1,9 +1,17 @@
-# **Se for editar, cria uma outra branch e deixa essa como "base"**
-# Leia tudo do readme.md
-# Leia tudo do FIX.txt
-# É preciso testar o código
-# Leia alguns comentários que eu coloquei durante o código
-# Atualizar documentação
-# Para o próximo projeto criar uma classe de ExceptionHandler
-# No futuro precisamos padronizar as validações
-# No futuro precisamos padronizar os try/except -> como são feitos e onde colocar
+### Coding4Hope 
+
+This project is the implemenation of the entities classes for the coding4Hope system.
+
+
+For more details see the Diagram  
+
+<p align="center">
+<img src="artifacts/UML_Class.png"
+width="90%"  alt="Diagram UML Classes" title="Diagram UML Classes"
+</p>
+
+> See the execution 
+<p align="center">
+<img src="artifacts/Examples.png"
+width="90%"  alt="Diagram UML Classes" title="Diagram UML Classes"
+</p>

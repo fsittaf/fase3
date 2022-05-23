@@ -1,4 +1,4 @@
-# Tentar automatizar isso
+# Menu for testing the services
 menu_txt = '''
 <1> - Get all persons
 <2> - Get person by id
