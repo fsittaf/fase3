@@ -26,6 +26,7 @@ class User:
     name: str = None
     last_name: str = None
     email: str = None
+    password: str = None
     age: str = None
     role: Role = None
     created_at: str = None

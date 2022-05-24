@@ -1,4 +1,4 @@
-import email
+from User import User
 
 # Talvez usar um json p salvar temporariamente?
 # Colocar User no init do repository?
@@ -21,8 +21,17 @@ class UserRepository:
             updated_at  timestamp
 
     '''
+
     def __init__(self) -> None:
         self._users = []
+        self._default_user = self.create_default_user()
+
+    def create_default_user():
+        return User(
+            name='admin',
+            password='admin',
+            role='admin'
+        )
 
     def add(self, user) -> None:
         '''

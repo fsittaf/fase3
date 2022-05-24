@@ -3,6 +3,7 @@ from IdUtils import generate_id
 from UserController import UserController
 from User import User
 from MenuUtils import menu_opt, menu_txt
+from Session import Session
 
 
 class WebDesktop:
@@ -11,8 +12,16 @@ class WebDesktop:
     The current MVP use a CLI that simulates the input of a form.
     """
 
-    def __init__(self, controller: UserController):
+    def __init__(self, controller: UserController, session: Session):
         self.controller = controller
+        self.session = session
+        self.login_session()
+
+    # Deixar esse método aqui ou jogar p dentro do session?
+    def login_session(self):
+        email = input('Email: ')
+        password = input('Senha: ')
+        self.session.login(email, password)
 
     def get_all(self):
         """
@@ -42,12 +51,12 @@ class WebDesktop:
         else:
             print(user)
 
-    def add(self, name, last_name, email, age, role):
+    def add(self, name, last_name, email, password, age, role):
         """
         Create a new User object
         """
         user = User(
-            generate_id(), name, last_name, email, age, role, formated_actual_time()
+            generate_id(), name, last_name, email, password, age, role, formated_actual_time()
         )
         # Talvez englobar um try/except em um fluxo maior?
         try:
@@ -98,7 +107,7 @@ class WebDesktop:
             print(user)
 
     def filter_by_age(self, age):
-        """'
+        """
         Filter the list of users by age attribute
         """
         users = self.controller.filter_by_age(age)
@@ -108,11 +117,11 @@ class WebDesktop:
     # 'Menu e Dashboard' -> no futuro extrair para frontend do django
 
     def execute(self):
-        """'
+        """
         Runs the menu options of the system
         """
         stop = False
-        while not stop:
+        while not stop and self.session._is_logged:
             print(menu_txt)
             choice = input("Enter your choice: ")
             print()
@@ -136,9 +145,10 @@ class WebDesktop:
                 name = input("Nome: ")
                 last_name = input("Último nome: ")
                 email = input("Email: ")
+                passwd = input("Senha: ")
                 age = input("Idade: ")
                 role = input("Role: ")
-                self.add(name, last_name, email, age, role)
+                self.add(name, last_name, email, passwd, age, role)
 
             elif choice == "5":
                 print("Insira os dados")
@@ -146,9 +156,11 @@ class WebDesktop:
                 name = input("Nome: ")
                 last_name = input("Último nome: ")
                 email = input("Email: ")
+                passwd = input("Senha: ")
                 age = input("Idade: ")
                 role = input("Role: ")
-                self.update(input_id, name, last_name, email, age, role)
+                self.update(input_id, name, last_name,
+                            email, passwd, age, role)
 
             elif choice == "6":
                 input_id = input("Insira o ID: ")
