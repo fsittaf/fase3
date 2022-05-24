@@ -26,11 +26,11 @@ class UserController:
         """
         return self.service.get_all()
 
-    def add(self, user):
+    def add(self, user, session_user):
         """
         Call to the UserService::add
         """
-        self.service.add(user)
+        self.service.add(user, session_user)
 
     def update(self, old_user, new_user):
         """

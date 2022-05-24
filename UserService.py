@@ -8,6 +8,7 @@ class UserService:
     """
         Service that manage the operations that a user can perform
     """
+
     def __init__(self, repository: UserRepository, validator: Validator):
         self.repository = repository
         self.validator = validator
@@ -21,8 +22,8 @@ class UserService:
     def get_all(self) -> list:
         return self.repository.get_all()
 
-    def add(self, user: User) -> None:
-        self.validator.validate(user)
+    def add(self, user: User, session_user) -> None:
+        self.validator.validate(user, session_user)
         self.repository.add(user)
 
     def update(self, old_user: User, new_user: User) -> None:

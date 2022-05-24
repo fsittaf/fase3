@@ -15,13 +15,14 @@ class WebDesktop:
     def __init__(self, controller: UserController, session: Session):
         self.controller = controller
         self.session = session
-        self.login_session()
+        self.login()
 
     # Deixar esse método aqui ou jogar p dentro do session?
-    def login_session(self):
-        email = input('Email: ')
-        password = input('Senha: ')
-        self.session.login(email, password)
+    def login(self):
+        while not self.session._is_logged:
+            email = input('Email: ')
+            password = input('Senha: ')
+            self.session.login(email, password)
 
     def get_all(self):
         """
@@ -60,7 +61,7 @@ class WebDesktop:
         )
         # Talvez englobar um try/except em um fluxo maior?
         try:
-            self.controller.add(user)
+            self.controller.add(user, self.session._session_user)
             print("User added successfully")
         except Exception as e:
             print("Error:", e)

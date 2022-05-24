@@ -2,7 +2,6 @@ import re
 from User import User
 from Role import Role
 from UserRepository import UserRepository
-from Session import Session
 from Constants import PASSWORD_MINIMUM_LEN
 
 
@@ -11,16 +10,17 @@ class Validator:
     Help class that validate if the data entered is meeting the requirements
     """
 
-    def __init__(self, repository: UserRepository, session: Session) -> None:
+    def __init__(self, repository: UserRepository) -> None:
         self._repository = repository
-        self.session = session
 
-    def validate(self, user: User):
+    def validate(self, user: User, session_user: User):
         '''
         Validate if user data enteres is compliant
         :param user: User object
         '''
-        if user.name == '':
+        if self.check_permissions(session_user):
+            raise Exception('Invalid permission')
+        elif user.name == '':
             raise Exception('Name cannot be empty')
         elif user.last_name == '':
             raise Exception('Last Name cannot be empty')
@@ -63,11 +63,7 @@ class Validator:
         return bool(re.fullmatch(regex, email))
 
     def is_passwd_valid(self, password: str) -> bool:
-        if len(password) < PASSWORD_MINIMUM_LEN:
-            return False
+        return len(password) >= PASSWORD_MINIMUM_LEN
 
-    # deixar aqui ou no session?
-    def validate_session(self):
-        if not self.session._is_logged:
-            print('You are not logged in')
-            return
+    def check_permissions(self, session_user: User) -> bool:
+        return session_user.role == 'admin'
