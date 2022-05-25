@@ -18,7 +18,7 @@ class Validator:
         Validate if user data enteres is compliant
         :param user: User object
         '''
-        if self.check_permissions(session_user):
+        if not self.check_permissions(session_user, user):
             raise Exception('Invalid permission')
         elif user.name == '':
             raise Exception('Name cannot be empty')
@@ -63,7 +63,9 @@ class Validator:
         return bool(re.fullmatch(regex, email))
 
     def is_passwd_valid(self, password: str) -> bool:
-        return len(password) >= PASSWORD_MINIMUM_LEN
+        return len(password) > PASSWORD_MINIMUM_LEN
 
-    def check_permissions(self, session_user: User) -> bool:
-        return session_user.role == 'admin'
+    # Checar se funciona na hora de fazer Update
+    def check_permissions(self, session_user: User, user: User = None, ) -> bool:
+        return session_user.role == Role.admin.name or user.user_id == session_user.user_id
+        # return session_user.role == Role.admin.name

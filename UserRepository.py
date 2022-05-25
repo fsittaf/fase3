@@ -67,14 +67,14 @@ class UserRepository:
             print('No users created')
         return self._users
 
-    def update(self, old_user, new_user) -> None:
+    def update(self, old_user, new_user, session_user) -> None:
         '''
         User object is modified with new data
         :param old_user: User object data
         :param new_user: User object data
         '''
         self.delete(old_user.user_id)
-        self.add(new_user)
+        self.add(new_user, session_user)
 
     def delete(self, id):
         '''

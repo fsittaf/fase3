@@ -32,17 +32,17 @@ class UserController:
         """
         self.service.add(user, session_user)
 
-    def update(self, old_user, new_user):
+    def update(self, old_user, new_user, session_user):
         """
         Call to the UserService::update
         """
-        self.service.update(old_user, new_user)
+        self.service.update(old_user, new_user, session_user)
 
-    def delete(self, id):
+    def delete(self, id, session_user):
         """
         Call to the UserService::delete passing in the ID
         """
-        self.service.delete(id)
+        self.service.delete(id, session_user)
 
     def get_by_name(self, name):
         """ 

@@ -26,11 +26,14 @@ class UserService:
         self.validator.validate(user, session_user)
         self.repository.add(user)
 
-    def update(self, old_user: User, new_user: User) -> None:
-        self.repository.update(old_user, new_user)
+    # Validar permissão
+    def update(self, old_user: User, new_user: User, session_user) -> None:
+        self.repository.update(old_user, new_user, session_user)
 
-    def delete(self, id) -> None:
-        self.repository.delete(id)
+    # Validar permissão
+    def delete(self, id, session_user) -> None:
+        self.validator.check_permissions(session_user, self.get(id))
+        self.repository.delete(id, session_user)
 
     def get_by_name(self, name):
         return next((user for user in self.repository.get_all() if user.name == name), None)

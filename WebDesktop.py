@@ -85,15 +85,15 @@ class WebDesktop:
             old_user.created_at,
             formated_actual_time(),
         )
-        self.controller.update(old_user, user)
+        self.controller.update(old_user, user, self.session._session_user)
         print("User updated successfully")
 
-    def delete(self, id):
+    def delete(self, id, session_user):
         """'
         Remove the user record from DB collections
         """
         try:
-            self.controller.delete(id)
+            self.controller.delete(id, session_user)
             print("User deleted successfully")
         except Exception as e:
             print(e)
