@@ -4,6 +4,7 @@ from UserController import UserController
 from User import User
 from MenuUtils import menu_opt, menu_txt
 from Session import Session
+from PasswUtils import generate_temp_passwd
 
 
 class WebDesktop:
@@ -146,7 +147,7 @@ class WebDesktop:
                 name = input("Nome: ")
                 last_name = input("Último nome: ")
                 email = input("Email: ")
-                passwd = input("Senha: ")
+                passwd = generate_temp_passwd()
                 age = input("Idade: ")
                 role = input("Role: ")
                 self.add(name, last_name, email, passwd, age, role)
@@ -176,5 +177,9 @@ class WebDesktop:
                 self.filter_by_age(age)
 
             elif choice == "9":
-                print("Finalizando...")
+                self.session.logout()
+                self.login()
+
+            elif choice == '0':
+                print('Finalizando...')
                 stop = True

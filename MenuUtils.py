@@ -8,5 +8,6 @@ menu_txt = '''
 <6> - Delete person
 <7> - Get person by name
 <8> - Filter person by age
-<9> - Exit'''
+<9> - Logout
+<0> - Exit'''
 menu_opt = [str(i) for i in range(1, 10)]

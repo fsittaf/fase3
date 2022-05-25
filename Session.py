@@ -23,8 +23,14 @@ class Session:
         if self._validator.is_email_valid(email):
             user = self._repository.get_by_email(email)
             if user.password == password:
+                print('Logged in!')
                 self._session_user = user
                 self._is_logged = True
                 return
 
         print('User not found')
+
+    def logout(self):
+        print('Logout!')
+        self._session_user = None
+        self._is_logged = False
