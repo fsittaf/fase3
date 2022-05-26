@@ -10,3 +10,4 @@
 /.vscode
 /.idea
 .DS_Store
+.mypy_cache

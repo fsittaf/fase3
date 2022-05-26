@@ -1,4 +1,8 @@
 from dataclasses import dataclass  # , replace
+
+from DateUtils import get_current_time
+from IdUtils import generate_id
+from PasswUtils import generate_temp_passwd
 from Role import Role
 
 # Model
@@ -6,7 +10,7 @@ from Role import Role
 # @TODO: Criar atributo de senha temporária
 
 
-@dataclass(init=True)
+@dataclass(kw_only=True)
 class User:
     """
     Entity object for the system.
@@ -22,12 +26,13 @@ class User:
         updated_at  timestamp
 
     """
-    user_id: str = None
-    name: str = None
+
+    user_id: str = generate_id()
+    name: str
     last_name: str = None
-    email: str = None
+    email: str
     password: str = None
     age: str = None
-    role: Role = None
-    created_at: str = None
-    updated_at: str = None
+    role: Role
+    created_at: str = get_current_time()
+    updated_at: str = get_current_time()

@@ -1,10 +1,11 @@
-from DateUtils import formated_actual_time
-from IdUtils import generate_id
-from UserController import UserController
-from User import User
+from DateUtils import get_current_time
+
+# from IdUtils import generate_id
 from MenuUtils import menu_opt, menu_txt
-from Session import Session
 from PasswUtils import generate_temp_passwd
+from Session import Session
+from User import User
+from UserController import UserController
 
 
 class WebDesktop:
@@ -21,8 +22,8 @@ class WebDesktop:
     # Deixar esse método aqui ou jogar p dentro do session?
     def login(self):
         while not self.session._is_logged:
-            email = input('Email: ')
-            password = input('Senha: ')
+            email = input("Email: ")
+            password = input("Senha: ")
             self.session.login(email, password)
 
     def get_all(self):
@@ -53,14 +54,22 @@ class WebDesktop:
         else:
             print(user)
 
-    def add(self, name, last_name, email, password, age, role):
+    def add(self, name, last_name, email, age, role):
         """
         Create a new User object
         """
         user = User(
-            generate_id(), name, last_name, email, password, age, role, formated_actual_time()
+            generate_id(),  # generated automatically
+            name,
+            last_name,
+            email,
+            password,  # generated automatically and send by email
+            age,
+            role,
+            # get_current_time(),
         )
         # Talvez englobar um try/except em um fluxo maior?
+        print(f"user: {user}")
         try:
             self.controller.add(user, self.session._session_user)
             print("User added successfully")
@@ -83,7 +92,7 @@ class WebDesktop:
             age,
             role,
             old_user.created_at,
-            formated_actual_time(),
+            get_current_time(),
         )
         self.controller.update(old_user, user, self.session._session_user)
         print("User updated successfully")
@@ -161,8 +170,7 @@ class WebDesktop:
                 passwd = input("Senha: ")
                 age = input("Idade: ")
                 role = input("Role: ")
-                self.update(input_id, name, last_name,
-                            email, passwd, age, role)
+                self.update(input_id, name, last_name, email, passwd, age, role)
 
             elif choice == "6":
                 input_id = input("Insira o ID: ")
@@ -180,6 +188,6 @@ class WebDesktop:
                 self.session.logout()
                 self.login()
 
-            elif choice == '0':
-                print('Finalizando...')
+            elif choice == "0":
+                print("Finalizando...")
                 stop = True
