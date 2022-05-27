@@ -38,3 +38,6 @@ class Session:
         print(arg0)
         self._session_user = arg1
         self._is_logged = arg2
+
+    def get_user_from_session(self):
+        return self._repository.get_by_email()

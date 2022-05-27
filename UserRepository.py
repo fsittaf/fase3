@@ -27,7 +27,9 @@ class UserRepository:
         self._default_user = self.create_default_user()
 
     def create_default_user(self):
-        return User(name="admin", password="admin", role="admin", email="a@b.c")
+        default_user = User(name="admin", password="admin", role="admin", email="a@b.c")
+        self._users.append(default_user)
+        return default_user
 
     def add(self, user) -> None:
         """

@@ -133,6 +133,7 @@ class WebDesktop:
         """
         stop = False
         while not stop and self.session._is_logged:
+            print(f"logged as {self.session.get_user_from_session(self.session)}")
             print(menu_txt)
             choice = input("Enter your choice: ")
             print()
