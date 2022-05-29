@@ -22,7 +22,7 @@ class Session:
         if self._validator.is_email_valid(email) and self._repository.get_by_email(
             email
         ):
-            # user = self._repository.get_by_email(email)
+            user = self._repository.get_by_email(email)
             print(f"user: {user.email} - {user.password}")
             if user.password == password:
                 self._login_logout("Logged in!", user, True)
@@ -40,4 +40,4 @@ class Session:
         self._is_logged = arg2
 
     def get_user_from_session(self):
-        return self._repository.get_by_email()
+        return self._session_user

@@ -29,11 +29,11 @@ class SystemUser:
     name: str
     last_name: str = None
     email: str
-    password: str
+    password: str = generate_temp_passwd()
     age: str = None
     role: Role
     created_at: str = get_current_time()
-    updated_at: str = get_current_time()
+    updated_at: str = None
 
 
 @dataclass(kw_only=True)
@@ -42,7 +42,10 @@ class Admin(SystemUser):
     Entity admin user for the system
     """
 
+    # user_id: str = generate_id()
     password: str
+    # created_at: str = get_current_time()
+    # updated_at: str = get_current_time()
 
 
 @dataclass(kw_only=True)
@@ -51,4 +54,8 @@ class User(SystemUser):
     Entity user for the system
     """
 
-    password: str = generate_temp_passwd()
+    # user_id: str = generate_id()
+    # password: str = generate_temp_passwd()
+    user_data: str = None
+    # created_at: str = get_current_time()
+    # updated_at: str = get_current_time()

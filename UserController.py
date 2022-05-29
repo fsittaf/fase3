@@ -32,11 +32,11 @@ class UserController:
         """
         self.service.add(user, session_user)
 
-    def update(self, old_user, new_user, session_user):
+    def update(self, old_user, session_user):
         """
         Call to the UserService::update
         """
-        self.service.update(old_user, new_user, session_user)
+        self.service.update(old_user, session_user)
 
     def delete(self, id, session_user):
         """
@@ -45,13 +45,13 @@ class UserController:
         self.service.delete(id, session_user)
 
     def get_by_name(self, name):
-        """ 
+        """
         Return the user by name passed in.
         """
         return self.service.get_by_name(name)
 
     def filter_by_age(self, age):
-        """ 
+        """
         Return a list of users that match the filter criteria
         """
         return self.service.filter_by_age(age)

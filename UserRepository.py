@@ -1,4 +1,5 @@
-from User import User
+from User import Admin
+from DateUtils import get_current_time
 
 # Talvez usar um json p salvar temporariamente?
 # Colocar User no init do repository?
@@ -27,7 +28,18 @@ class UserRepository:
         self._default_user = self.create_default_user()
 
     def create_default_user(self):
-        default_user = User(name="admin", password="admin", role="admin", email="a@b.c")
+        user_def = "admin-default"
+        pass_def = "admin"
+        email_def = "default@void.test"
+        print("--------------------------------------------------------------------")
+        print(
+            f"\t1st Login into system, creating default user:\n\tLogin Credentials: email: {email_def}, password: {pass_def}",
+        )
+        print("--------------------------------------------------------------------")
+
+        default_user = Admin(
+            name=user_def, password=pass_def, role="admin", email=email_def
+        )
         self._users.append(default_user)
         return default_user
 
@@ -65,16 +77,27 @@ class UserRepository:
             print("No users created")
         return self._users
 
-    def update(self, old_user, new_user, session_user) -> None:
+    def update(self, old_user, session_user) -> None:
         """
         User object is modified with new data
         :param old_user: User object data
         :param new_user: User object data
         """
-        self.delete(old_user.user_id)
-        self.add(new_user, session_user)
+        user = self.get(old_user.user_id)
+        user.name = old_user.name
+        user.last_name = old_user.last_name
+        user.email = old_user.email
+        user.password = old_user.password
+        user.age = old_user.age
+        user.role = old_user.role
+        user.created_at = old_user.created_at
+        if old_user.role == "user":
+            user.user_data = old_user.user_data
+        user.updated_at = get_current_time()
+        # self.delete(old_user.user_id)
+        # self.add(new_user, session_user)
 
-    def delete(self, id):
+    def delete(self, id, session_user):
         """
         Remove the record belonging to an ID passed In from the Users collection
         :param id: Int USer Identifier

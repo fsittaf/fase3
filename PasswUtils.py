@@ -24,7 +24,7 @@ def generate_temp_passwd():
 
     sample_list = list(letters + digits)
     random.shuffle(sample_list)
-    print(f"DEfault password {sample_list}")
+    # print(f"password generated: {''.join(sample_list)}")
     return "".join(sample_list)
 
 
