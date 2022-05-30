@@ -21,8 +21,25 @@ This project is the implemenation of the `entities` classes for the `Coding4Hope
 </p>
 
 ----
+#### Executing the program in command line:
 
-For more details see the Diagram  and the [documentation.](/docs/index.html)  
+Run the python command
+```
+python3 main.py
+```
+
+
+Use the default user credentials created with "Admin" privileges.
+
+`default@void.test`
+
+`password: admin`
+
+
+Switch the users and see the  differnt menu options for **Admin** and **Users** classes, child from **SystemUser**
+----
+
+For more details about the entities and relationships see the Diagram  and the [documentation.](/docs/index.html)  
 
 <p align="center">
 <img src="artifacts/UML_Class.png"
